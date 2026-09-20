@@ -7,7 +7,6 @@ import { Footer } from "@/components/layout/Footer";
 import { BhonduMascot } from "@/components/mascot/BhonduMascot";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { ModeToggle } from "@/components/ui/ModeToggle";
 import { MascotState, ExplanationMode } from "@/lib/types";
 import {
@@ -19,11 +18,8 @@ import {
   Smartphone,
   GraduationCap,
   Globe,
-  HelpCircle,
   Sparkles,
   CheckCircle,
-  Eye,
-  Layers,
   CheckCircle2,
   AlertTriangle,
 } from "lucide-react";
@@ -142,20 +138,13 @@ export default function LandingPage() {
 
           <div className="max-w-5xl mx-auto text-center space-y-8 relative z-10">
             {/* Top pill badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#18181B] border-2 border-[#27272A] text-xs font-bold text-[#F4F4F5] shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-              <span className="w-2 h-2 rounded-full bg-[#C7FF3D] animate-pulse"></span>
-              <span>The internet&apos;s “bro what do I do?” button</span>
-              <span className="text-[#A1A1AA]">•</span>
-              <span className="text-[#C7FF3D]">100% Free at MVP</span>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#18181B] border border-[#27272A] text-xs font-semibold text-[#A1A1AA]">
+              <span className="w-2 h-2 rounded-full bg-[#C7FF3D]"></span>
+              <span className="text-[#F4F4F5]">The internet&apos;s “bro what do I do?” button</span>
             </div>
 
             {/* Main Headline */}
             <div className="space-y-4">
-              <div className="inline-block">
-                <span className="text-sm sm:text-base font-black uppercase tracking-widest text-[#A1A1AA] bg-[#111113] px-3.5 py-1 rounded-full border border-[#27272A]">
-                  Bhai what is this 😭
-                </span>
-              </div>
               <h1 className="text-4xl sm:text-7xl font-black tracking-tight text-[#F4F4F5] leading-[1.08]">
                 Bas screenshot bhe <span className="text-[#C7FF3D] inline-block animate-bounce">💀</span>
               </h1>
@@ -183,9 +172,7 @@ export default function LandingPage() {
 
               <div className="space-y-3 flex-1">
                 <div className="flex items-center justify-between">
-                  <Badge variant="purple" size="sm">
-                    Meet Bhondu
-                  </Badge>
+                  <h3 className="font-bold text-sm text-[#F4F4F5]">Bhondu</h3>
                   <span className="text-[11px] font-mono text-[#A1A1AA]">
                     mood: <span className="text-[#C7FF3D] font-bold">{heroMascotState}</span>
                   </span>
@@ -250,9 +237,6 @@ export default function LandingPage() {
         {/* ===================== THE 4-STEP LOOP ===================== */}
         <section id="how-it-works" className="max-w-5xl mx-auto px-4 sm:px-6 space-y-10 scroll-mt-20">
           <div className="text-center space-y-3">
-            <div className="inline-flex items-center gap-2">
-              <Badge variant="cyan">The Loop</Badge>
-            </div>
             <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-[#F4F4F5]">
               How BhonduFix saves your sanity
             </h2>
@@ -263,7 +247,7 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Step 1 */}
-            <Card variant="default" className="relative space-y-4 hover:-translate-y-1 transition-transform">
+            <Card variant="default" className="relative space-y-3 hover:-translate-y-1 transition-transform">
               <div className="w-10 h-10 rounded-2xl bg-[#18181B] border-2 border-[#27272A] flex items-center justify-center font-black text-sm text-[#C7FF3D]">
                 01
               </div>
@@ -271,15 +255,10 @@ export default function LandingPage() {
               <p className="text-xs text-[#A1A1AA] leading-relaxed">
                 Take a screenshot of the broken error dialog, terminal line, or confusing form and drop it in.
               </p>
-              <div className="pt-2">
-                <span className="text-[11px] font-bold text-[#C7FF3D] uppercase tracking-wider">
-                  Drag / Paste / Upload
-                </span>
-              </div>
             </Card>
 
             {/* Step 2 */}
-            <Card variant="default" className="relative space-y-4 hover:-translate-y-1 transition-transform">
+            <Card variant="default" className="relative space-y-3 hover:-translate-y-1 transition-transform">
               <div className="w-10 h-10 rounded-2xl bg-[#18181B] border-2 border-[#27272A] flex items-center justify-center font-black text-sm text-[#22D3EE]">
                 02
               </div>
@@ -287,15 +266,10 @@ export default function LandingPage() {
               <p className="text-xs text-[#A1A1AA] leading-relaxed">
                 Vision AI inspects the visible buttons, error logs, and context to diagnose what genuinely happened.
               </p>
-              <div className="pt-2">
-                <span className="text-[11px] font-bold text-[#22D3EE] uppercase tracking-wider">
-                  Visual OCR + AI
-                </span>
-              </div>
             </Card>
 
             {/* Step 3 */}
-            <Card variant="default" className="relative space-y-4 hover:-translate-y-1 transition-transform">
+            <Card variant="default" className="relative space-y-3 hover:-translate-y-1 transition-transform">
               <div className="w-10 h-10 rounded-2xl bg-[#18181B] border-2 border-[#27272A] flex items-center justify-center font-black text-sm text-[#8B5CF6]">
                 03
               </div>
@@ -303,15 +277,10 @@ export default function LandingPage() {
               <p className="text-xs text-[#A1A1AA] leading-relaxed">
                 Receive 2–3 exact, numbered steps. Choose Bhondu Mode for friendly analogies or Normal Mode for concise instructions.
               </p>
-              <div className="pt-2">
-                <span className="text-[11px] font-bold text-[#A78BFA] uppercase tracking-wider">
-                  Zero Jargon
-                </span>
-              </div>
             </Card>
 
             {/* Step 4 */}
-            <Card variant="default" className="relative space-y-4 hover:-translate-y-1 transition-transform">
+            <Card variant="default" className="relative space-y-3 hover:-translate-y-1 transition-transform">
               <div className="w-10 h-10 rounded-2xl bg-[#18181B] border-2 border-[#27272A] flex items-center justify-center font-black text-sm text-[#FB7185]">
                 04
               </div>
@@ -319,11 +288,6 @@ export default function LandingPage() {
               <p className="text-xs text-[#A1A1AA] leading-relaxed">
                 Did it fix the problem? If yes, celebrate! If still cooked, drop the new screen and Bhondu adapts.
               </p>
-              <div className="pt-2">
-                <span className="text-[11px] font-bold text-[#FB7185] uppercase tracking-wider">
-                  Continuous Loop
-                </span>
-              </div>
             </Card>
           </div>
         </section>
@@ -332,9 +296,6 @@ export default function LandingPage() {
         <section className="max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div className="space-y-1">
-              <div className="inline-flex items-center gap-2">
-                <Badge variant="purple">Interactive Comparison</Badge>
-              </div>
               <h2 className="text-2xl sm:text-3xl font-black text-[#F4F4F5]">
                 See how Bhondu translates tech gibberish
               </h2>
@@ -374,7 +335,7 @@ export default function LandingPage() {
                     What you saw on screen
                   </span>
                   <span className="text-[11px] font-mono text-[#71717A]">
-                    Category: {realisticExamples[activeTab].category}
+                    {realisticExamples[activeTab].category}
                   </span>
                 </div>
 
@@ -395,9 +356,6 @@ export default function LandingPage() {
                     <Sparkles className="w-3.5 h-3.5" />
                     How BhonduFix explains it ({demoMode.toUpperCase()})
                   </span>
-                  <Badge variant={demoMode === "bhondu" ? "lime" : "purple"} size="sm">
-                    {demoMode === "bhondu" ? "Bhondu Mode" : "Normal Mode"}
-                  </Badge>
                 </div>
 
                 <div className="p-4 rounded-2xl bg-[#111113] border border-[#27272A] text-xs sm:text-sm text-[#F4F4F5] leading-relaxed shadow-sm">
@@ -437,10 +395,9 @@ export default function LandingPage() {
           </Card>
         </section>
 
-        {/* ===================== MVP CATEGORIES ===================== */}
+        {/* ===================== CATEGORIES ===================== */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6 space-y-8">
           <div className="text-center space-y-2">
-            <Badge variant="lime">Coverage</Badge>
             <h2 className="text-3xl font-black text-[#F4F4F5]">What can you drop right now?</h2>
             <p className="text-xs sm:text-sm text-[#A1A1AA] max-w-lg mx-auto">
               Focused strictly on high-impact errors where real users get stuck daily.
@@ -453,12 +410,7 @@ export default function LandingPage() {
                 key={idx}
                 className="p-5 rounded-3xl bg-[#18181B] border-2 border-[#27272A] hover:border-[#71717A] transition-all space-y-3"
               >
-                <div className="flex items-center justify-between">
-                  <div className="p-2.5 rounded-xl bg-[#111113] border border-[#27272A]">{cat.icon}</div>
-                  <span className="text-[10px] font-black uppercase text-[#A1A1AA] bg-[#111113] px-2.5 py-1 rounded-full border border-[#27272A]">
-                    {cat.tag}
-                  </span>
-                </div>
+                <div className="p-2.5 w-fit rounded-xl bg-[#111113] border border-[#27272A]">{cat.icon}</div>
                 <div>
                   <h3 className="text-sm font-bold text-[#F4F4F5]">{cat.name}</h3>
                   <p className="text-xs text-[#A1A1AA] mt-1 leading-relaxed">{cat.desc}</p>
@@ -467,10 +419,10 @@ export default function LandingPage() {
             ))}
 
             {/* Coming soon card */}
-            <div className="p-5 rounded-3xl bg-[#111113]/60 border-2 border-dashed border-[#27272A] space-y-3 flex flex-col justify-center text-center">
-              <span className="text-xs font-bold text-[#71717A] uppercase tracking-wider">Later Phases</span>
+            <div className="p-5 rounded-3xl bg-[#111113]/60 border-2 border-dashed border-[#27272A] space-y-2 flex flex-col justify-center text-center">
+              <span className="text-xs font-bold text-[#A1A1AA]">More Coming Soon</span>
               <p className="text-xs text-[#71717A]">
-                Payments & banking errors, tax forms, and browser extensions coming after core loop stabilizes.
+                Payments & banking errors, tax forms, and browser extensions.
               </p>
             </div>
           </div>
@@ -479,12 +431,6 @@ export default function LandingPage() {
         {/* ===================== BOTTOM CTA BANNER ===================== */}
         <section className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="relative overflow-hidden p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#18181B] via-[#111113] to-[#09090B] border-2 border-[#C7FF3D]/30 shadow-[0_12px_40px_rgba(0,0,0,0.8)] text-center space-y-6">
-            <div className="inline-block">
-              <Badge variant="lime" dot>
-                Ready to unblock yourself?
-              </Badge>
-            </div>
-
             <div className="space-y-2">
               <h2 className="text-3xl sm:text-5xl font-black text-[#F4F4F5]">
                 Stop googling Reddit threads from 2016.
@@ -503,7 +449,7 @@ export default function LandingPage() {
             </div>
 
             <div className="text-[11px] text-[#71717A]">
-              Free during MVP • No login or credit card required
+              No login or credit card required
             </div>
           </div>
         </section>

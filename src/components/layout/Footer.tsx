@@ -11,9 +11,6 @@ export const Footer: React.FC = () => {
               <span className="font-extrabold text-lg text-[#F4F4F5]">
                 Bhondu<span className="text-[#C7FF3D]">Fix</span>
               </span>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-[#18181B] text-[#A1A1AA] border border-[#27272A]">
-                Bas screenshot bhe
-              </span>
             </div>
             <p className="text-sm text-[#A1A1AA] max-w-md leading-relaxed mb-4">
               Tech support for people who don’t speak tech. Drop the confusing screen, get plain-English, safe instructions, and fix your computer without an engineering degree.
@@ -41,7 +38,7 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#F4F4F5] mb-3 flex items-center gap-1.5">
               <Terminal className="w-4 h-4 text-[#22D3EE]" />
-              MVP Categories
+              Categories
             </h4>
             <ul className="space-y-2 text-xs text-[#A1A1AA]">
               <li>• Coding errors & dev tools</li>
@@ -54,12 +51,6 @@ export const Footer: React.FC = () => {
 
         <div className="pt-6 border-t border-[#18181B] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#71717A]">
           <p>© {new Date().getFullYear()} BhonduFix. Correctness → Safety → Clarity → Speed → Personality.</p>
-          <div className="flex items-center gap-4">
-            <span className="inline-flex items-center gap-1">
-              <span className="w-2 h-2 rounded-full bg-[#C7FF3D]"></span>
-              All systems operational
-            </span>
-          </div>
         </div>
       </div>
     </footer>

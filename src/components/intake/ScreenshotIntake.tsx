@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { BhonduMascot } from "@/components/mascot/BhonduMascot";
 import { Button } from "@/components/ui/Button";
-import { Badge } from "@/components/ui/Badge";
 import { MascotState, ExplanationMode, AIResponseContract } from "@/lib/types";
 import {
   UploadCloud,
@@ -13,7 +12,6 @@ import {
   AlertTriangle,
   Sparkles,
   ArrowRight,
-  ShieldCheck,
   Info,
 } from "lucide-react";
 
@@ -252,37 +250,18 @@ export const ScreenshotIntake: React.FC<ScreenshotIntakeProps> = ({
 
       {/* Mascot Intake Header Card */}
       <div className="flex flex-col sm:flex-row items-center gap-5 p-5 rounded-3xl bg-[#111113] border-2 border-[#27272A] shadow-md transition-all">
-        <div className="shrink-0 relative">
+        <div className="shrink-0">
           <BhonduMascot state={currentMascotState} size={110} />
-          <div className="absolute -bottom-1 -right-1">
-            <Badge
-              variant={
-                currentMascotState === "analyzing"
-                  ? "cyan"
-                  : currentMascotState === "warning"
-                  ? "warning"
-                  : currentMascotState === "detective"
-                  ? "lime"
-                  : "purple"
-              }
-              size="sm"
-            >
-              {currentMascotState}
-            </Badge>
-          </div>
         </div>
 
         <div className="space-y-1.5 text-center sm:text-left flex-1">
-          <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+          <div className="flex items-center justify-center sm:justify-start">
             <span className="text-lg sm:text-xl font-black text-[#F4F4F5]">
               {isProcessing
                 ? "Connecting to Backend 🚀"
                 : previewUrl
                 ? "Screenshot Ready! 🔍"
                 : "Bas screenshot bhe 💀"}
-            </span>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-[#18181B] text-[#C7FF3D] font-mono border border-[#27272A]">
-              Mode: {mode.toUpperCase()}
             </span>
           </div>
 
@@ -294,13 +273,8 @@ export const ScreenshotIntake: React.FC<ScreenshotIntakeProps> = ({
               : "Drop the confusing window, error dialog, or terminal line. You can also paste from clipboard (Ctrl+V)."}
           </p>
 
-          <div className="flex items-center justify-center sm:justify-start gap-3 pt-1 text-[11px] text-[#71717A]">
-            <span className="inline-flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#C7FF3D]" />
-              Zero credentials stored
-            </span>
-            <span>•</span>
-            <span>Server validated: PNG, JPG, WebP up to 10MB</span>
+          <div className="flex items-center justify-center sm:justify-start pt-1 text-[11px] text-[#71717A]">
+            <span>Supported formats: PNG, JPG, WebP up to 10MB</span>
           </div>
         </div>
       </div>

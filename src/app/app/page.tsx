@@ -158,19 +158,13 @@ export default function WorkspacePage() {
         )}
 
         {/* Safety & Trust Footer Pill */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 p-4 rounded-2xl bg-[#111113] border border-[#27272A] text-xs text-[#A1A1AA]">
+        <div className="flex items-center justify-center p-4 rounded-2xl bg-[#111113] border border-[#27272A] text-xs text-[#A1A1AA] text-center">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-[#C7FF3D] shrink-0" />
             <span>
               <strong>Private & ephemeral:</strong> Uploads are analyzed in-memory. Zero credentials ever requested or stored.
             </span>
           </div>
-          <Link
-            href="/test"
-            className="text-[#A78BFA] hover:underline shrink-0 text-[11px] font-bold"
-          >
-            M1 Foundation Playground →
-          </Link>
         </div>
       </main>
 

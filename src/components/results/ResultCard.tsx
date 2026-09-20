@@ -127,24 +127,8 @@ export const ResultCard: React.FC<ResultCardProps> = ({
     <div className={`space-y-6 animate-in fade-in zoom-in-95 duration-200 ${className}`}>
       {/* 1. Header Banner & Mascot Persona */}
       <div className="flex flex-col sm:flex-row items-center gap-5 p-6 rounded-3xl bg-[#111113] border-2 border-[#27272A] shadow-lg">
-        <div className="shrink-0 relative">
+        <div className="shrink-0">
           <BhonduMascot state={activeMascot} size={110} />
-          <div className="absolute -bottom-1 -right-1">
-            <Badge
-              variant={
-                isResolved
-                  ? "lime"
-                  : safety.level === "risky"
-                  ? "warning"
-                  : isLowConfidence
-                  ? "purple"
-                  : "cyan"
-              }
-              size="sm"
-            >
-              {activeMascot}
-            </Badge>
-          </div>
         </div>
 
         <div className="space-y-2 text-center sm:text-left flex-1">
@@ -159,24 +143,15 @@ export const ResultCard: React.FC<ResultCardProps> = ({
               }
               dot
             >
-              {diagnosis.confidence >= 60 ? "Confidence" : "Low Confidence"}:{" "}
-              {diagnosis.confidence}%
+              {diagnosis.confidence}% Confidence
             </Badge>
 
-            <Badge
-              variant={
-                safety.level === "safe"
-                  ? "lime"
-                  : safety.level === "risky"
-                  ? "warning"
-                  : "cyan"
-              }
-            >
-              Safety: {safety.level.toUpperCase()}
-            </Badge>
+            {safety.level === "risky" && (
+              <Badge variant="warning">Requires Confirmation</Badge>
+            )}
 
             {isLowConfidence && (
-              <Badge variant="purple">Needs Context</Badge>
+              <Badge variant="purple">Needs More Context</Badge>
             )}
           </div>
 
@@ -218,19 +193,14 @@ export const ResultCard: React.FC<ResultCardProps> = ({
         </div>
       )}
 
-      {/* 3. Safety Gate Evaluation Banner (Section 7) */}
+      {/* 3. Safety Gate Evaluation Banner (for Risky Actions) */}
       {!isLowConfidence && safety.level === "risky" && (
         <div className="p-5 rounded-3xl bg-[#FBBF24]/10 border-2 border-[#FBBF24]/40 space-y-3">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <AlertTriangle className="w-5 h-5 text-[#FBBF24] shrink-0" />
-              <h3 className="text-sm font-black text-[#FBBF24] uppercase tracking-wide">
-                {safety.title}
-              </h3>
-            </div>
-            <span className="text-[10px] uppercase font-bold text-[#FBBF24] bg-[#FBBF24]/20 px-2.5 py-0.5 rounded-full border border-[#FBBF24]/30">
-              Safety Gate
-            </span>
+          <div className="flex items-center gap-2">
+            <AlertTriangle className="w-5 h-5 text-[#FBBF24] shrink-0" />
+            <h3 className="text-sm font-black text-[#FBBF24] uppercase tracking-wide">
+              {safety.title}
+            </h3>
           </div>
 
           <p className="text-xs text-[#F4F4F5] leading-relaxed">
@@ -263,16 +233,6 @@ export const ResultCard: React.FC<ResultCardProps> = ({
               <span>Risk acknowledged by user. Gated steps unlocked below.</span>
             </div>
           )}
-        </div>
-      )}
-
-      {/* Safe Action Banner */}
-      {!isLowConfidence && safety.level === "safe" && (
-        <div className="p-3.5 rounded-2xl bg-[#C7FF3D]/10 border border-[#C7FF3D]/20 text-xs text-[#C7FF3D] flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 shrink-0" />
-          <span>
-            <strong>Safety Gate: </strong> {safety.reason}
-          </span>
         </div>
       )}
 
@@ -346,13 +306,10 @@ export const ResultCard: React.FC<ResultCardProps> = ({
         </div>
       )}
 
-      {/* 5. Verification Loop: "Did Bhondu fix it?" (Section 9 & Section 17) */}
+      {/* 5. Verification Loop: "Did Bhondu fix it?" */}
       {!isLowConfidence && !isResolved && (
         <div className="rounded-3xl bg-[#111113] border-2 border-[#27272A] p-6 space-y-4 text-center">
           <div className="space-y-1">
-            <span className="text-xs font-black uppercase text-[#A1A1AA] tracking-wider">
-              Verification Loop
-            </span>
             <h3 className="text-lg sm:text-xl font-black text-[#F4F4F5]">
               Did Bhondu fix it?
             </h3>
@@ -398,9 +355,6 @@ export const ResultCard: React.FC<ResultCardProps> = ({
           </div>
 
           <div className="space-y-1">
-            <Badge variant="lime" dot>
-              Issue Squashed
-            </Badge>
             <h3 className="text-2xl font-black text-[#F4F4F5]">
               Bhondu fixed it! 🗿
             </h3>
@@ -429,7 +383,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#8B5CF6]" />
               <h3 className="text-sm font-bold text-[#F4F4F5]">
-                Send Follow-up Screenshot (Continuous Loop)
+                Send Follow-up Screenshot
               </h3>
             </div>
             <button
@@ -504,7 +458,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
 
       {/* 8. Reset to Upload / Start Over Action */}
       <div className="pt-2 flex items-center justify-between text-xs text-[#71717A]">
-        <span>BhonduFix Engine v1.0 • Ephemeral in-memory diagnosis</span>
+        <span>Ephemeral in-memory diagnosis</span>
         <button
           onClick={onReset}
           className="text-[#A1A1AA] hover:text-[#C7FF3D] underline cursor-pointer font-medium"

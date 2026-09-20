@@ -2,8 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Badge } from "@/components/ui/Badge";
-import { ShieldCheck, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const Navbar: React.FC = () => {
   return (
@@ -23,9 +22,6 @@ export const Navbar: React.FC = () => {
               <span className="font-extrabold text-lg sm:text-xl tracking-tight text-[#F4F4F5]">
                 Bhondu<span className="text-[#C7FF3D]">Fix</span>
               </span>
-              <span className="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-black uppercase bg-[#8B5CF6]/20 text-[#A78BFA] border border-[#8B5CF6]/30">
-                v1.0 MVP
-              </span>
             </div>
             <p className="text-[11px] text-[#A1A1AA] hidden sm:block font-medium">
               Bas screenshot bhe 🚀
@@ -34,19 +30,10 @@ export const Navbar: React.FC = () => {
         </Link>
 
         {/* Right Nav Elements */}
-        <nav aria-label="Quick Actions" className="flex items-center gap-2 sm:gap-4">
-          <Badge variant="cyan" size="sm" dot className="hidden md:inline-flex">
-            AI Vision Online
-          </Badge>
-
-          <div className="hidden sm:flex items-center gap-1.5 text-xs text-[#A1A1AA] bg-[#18181B] px-3 py-1.5 rounded-full border border-[#27272A]">
-            <ShieldCheck className="w-4 h-4 text-[#C7FF3D]" />
-            <span className="font-medium">Zero credentials stored</span>
-          </div>
-
+        <nav aria-label="Quick Actions" className="flex items-center gap-3">
           <Link
             href="/app"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-[#C7FF3D] text-[#09090B] border border-[#C7FF3D] hover:brightness-105 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C7FF3D]"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold bg-[#C7FF3D] text-[#09090B] border border-[#C7FF3D] hover:brightness-105 active:scale-95 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#C7FF3D]"
           >
             <span>Workspace</span>
             <ArrowRight className="w-3.5 h-3.5" />
