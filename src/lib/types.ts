@@ -1,4 +1,4 @@
-export type MascotState = 'confused' | 'analyzing' | 'detective' | 'warning' | 'solved';
+export type MascotState = 'confused' | 'analyzing' | 'detective' | 'warning' | 'solved' | 'panicking' | 'thinking' | 'celebrating';
 
 export type ExplanationMode = 'bhondu' | 'normal';
 

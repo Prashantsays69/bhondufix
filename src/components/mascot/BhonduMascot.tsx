@@ -37,7 +37,7 @@ export const BhonduMascot: React.FC<BhonduMascotProps> = ({
             className="animate-ping opacity-20"
           />
         )}
-        {state === "solved" && (
+        {(state === "solved" || state === "celebrating") && (
           <circle
             cx="80"
             cy="80"
@@ -46,12 +46,21 @@ export const BhonduMascot: React.FC<BhonduMascotProps> = ({
             className="animate-pulse opacity-25"
           />
         )}
-        {state === "warning" && (
+        {(state === "warning" || state === "panicking") && (
           <circle
             cx="80"
             cy="80"
             r="65"
-            fill="#FBBF24"
+            fill="#FB7185"
+            className="animate-pulse opacity-25"
+          />
+        )}
+        {state === "thinking" && (
+          <circle
+            cx="80"
+            cy="80"
+            r="65"
+            fill="#22D3EE"
             className="animate-pulse opacity-20"
           />
         )}
@@ -249,10 +258,10 @@ export const BhonduMascot: React.FC<BhonduMascotProps> = ({
             </g>
           )}
 
-          {/* 5. SOLVED STATE */}
-          {state === "solved" && (
+          {/* 5. SOLVED / CELEBRATING STATE */}
+          {(state === "solved" || state === "celebrating") && (
             <g id="state-solved">
-              {/* Cool Guy 8-bit / Thug-life style shades or party confetti */}
+              {/* Cool Guy 8-bit / Thug-life style shades */}
               <g transform="translate(42, 54)">
                 <path
                   d="M0 0 H34 L28 18 H6 Z"
@@ -267,7 +276,6 @@ export const BhonduMascot: React.FC<BhonduMascotProps> = ({
                   strokeWidth="2"
                 />
                 <line x1="32" y1="4" x2="44" y2="4" stroke="#111113" strokeWidth="3" />
-                {/* Sunglasses shine */}
                 <line x1="8" y1="5" x2="22" y2="15" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
                 <line x1="50" y1="5" x2="64" y2="15" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" />
               </g>
@@ -290,6 +298,75 @@ export const BhonduMascot: React.FC<BhonduMascotProps> = ({
               </g>
               <g transform="translate(126, 32) scale(0.75)">
                 <path d="M12 0 L15 9 L24 12 L15 15 L12 24 L9 15 L0 12 L9 9 Z" fill="#22D3EE" />
+              </g>
+              {state === "celebrating" && (
+                <g transform="translate(12, 10)">
+                  <circle cx="2" cy="18" r="3" fill="#FB7185" />
+                  <circle cx="138" cy="20" r="3.5" fill="#8B5CF6" />
+                  <polygon points="128,8 132,16 124,16" fill="#C7FF3D" />
+                </g>
+              )}
+            </g>
+          )}
+
+          {/* 6. PANICKING STATE */}
+          {state === "panicking" && (
+            <g id="state-panicking">
+              {/* Wide terrified cartoon eyes */}
+              <circle cx="58" cy="65" r="14" fill="#111113" />
+              <circle cx="58" cy="65" r="11" fill="#FFFFFF" />
+              <circle cx="58" cy="65" r="4" fill="#FB7185" />
+
+              <circle cx="102" cy="65" r="14" fill="#111113" />
+              <circle cx="102" cy="65" r="11" fill="#FFFFFF" />
+              <circle cx="102" cy="65" r="4" fill="#FB7185" />
+
+              {/* Screaming open mouth */}
+              <ellipse cx="80" cy="92" rx="14" ry="10" fill="#111113" stroke="#111113" strokeWidth="2" />
+              <ellipse cx="80" cy="95" rx="8" ry="4" fill="#FB7185" />
+
+              {/* Double sweat drops */}
+              <path
+                d="M40 40 C40 36 44 32 44 32 C44 32 48 36 48 40 C48 42.5 46.2 44 44 44 C41.8 44 40 42.5 40 40 Z"
+                fill="#22D3EE"
+                stroke="#111113"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M116 40 C116 36 120 32 120 32 C120 32 124 36 124 40 C124 42.5 122.2 44 120 44 C117.8 44 116 42.5 116 40 Z"
+                fill="#22D3EE"
+                stroke="#111113"
+                strokeWidth="1.5"
+              />
+
+              {/* Stress lines over head */}
+              <line x1="70" y1="18" x2="66" y2="8" stroke="#FB7185" strokeWidth="3" strokeLinecap="round" />
+              <line x1="80" y1="16" x2="80" y2="6" stroke="#FB7185" strokeWidth="3" strokeLinecap="round" />
+              <line x1="90" y1="18" x2="94" y2="8" stroke="#FB7185" strokeWidth="3" strokeLinecap="round" />
+            </g>
+          )}
+
+          {/* 7. THINKING STATE */}
+          {state === "thinking" && (
+            <g id="state-thinking">
+              {/* Looking up thoughtfully */}
+              <circle cx="58" cy="63" r="10" fill="#111113" />
+              <circle cx="60" cy="60" r="3.5" fill="#FFFFFF" />
+
+              <circle cx="100" cy="63" r="10" fill="#111113" />
+              <circle cx="102" cy="60" r="3.5" fill="#FFFFFF" />
+
+              {/* Pensive pursed mouth */}
+              <circle cx="85" cy="88" r="4.5" fill="#111113" />
+
+              {/* Lightbulb floating near head */}
+              <g transform="translate(112, 10) scale(0.9)">
+                <ellipse cx="12" cy="12" rx="9" ry="9" fill="#FBBF24" stroke="#111113" strokeWidth="2.5" />
+                <rect x="9" y="20" width="6" height="4" fill="#71717A" stroke="#111113" strokeWidth="1.5" />
+                {/* Glow rays */}
+                <line x1="12" y1="0" x2="12" y2="2" stroke="#FBBF24" strokeWidth="2" strokeLinecap="round" />
+                <line x1="2" y1="5" x2="4" y2="7" stroke="#FBBF24" strokeWidth="2" strokeLinecap="round" />
+                <line x1="22" y1="5" x2="20" y2="7" stroke="#FBBF24" strokeWidth="2" strokeLinecap="round" />
               </g>
             </g>
           )}
