@@ -24,7 +24,7 @@ export const Navbar: React.FC = () => {
               </span>
             </div>
             <p className="text-[11px] text-[#A1A1AA] hidden sm:block font-medium">
-              Bas screenshot bhe 🚀
+              Bas screenshot bhe 💀
             </p>
           </div>
         </Link>

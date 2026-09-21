@@ -97,31 +97,26 @@ export default function LandingPage() {
       icon: <Terminal className="w-5 h-5 text-[#C7FF3D]" />,
       name: "Coding & Dev Errors",
       desc: "Port collisions, npm conflicts, Git merge drama, and cryptic bash logs.",
-      tag: "Top Request",
     },
     {
       icon: <Globe className="w-5 h-5 text-[#22D3EE]" />,
       name: "Browser & Web Glitches",
       desc: "CORS blocks, 403 Forbidden, broken cookies, and payment portal timeouts.",
-      tag: "Instant Fix",
     },
     {
       icon: <Laptop className="w-5 h-5 text-[#8B5CF6]" />,
       name: "Windows & Desktop Apps",
       desc: "Missing DLLs, frozen background services, and unclickable permission dialogs.",
-      tag: "Safe Steps",
     },
     {
       icon: <Smartphone className="w-5 h-5 text-[#FBBF24]" />,
       name: "Android Device Issues",
       desc: "Developer options, ADB debugging, permission locks, and storage mysteries.",
-      tag: "Mobile",
     },
     {
       icon: <GraduationCap className="w-5 h-5 text-[#FB7185]" />,
       name: "College Portals",
       desc: "Clunky ERPs, registration session timeouts, and attendance gateways.",
-      tag: "Panic-Proof",
     },
   ];
 
@@ -137,62 +132,92 @@ export default function LandingPage() {
           <div className="absolute top-1/3 right-10 w-[350px] h-[250px] bg-[#C7FF3D]/10 blur-[100px] rounded-full pointer-events-none" />
 
           <div className="max-w-5xl mx-auto text-center space-y-8 relative z-10">
-            {/* Top pill badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#18181B] border border-[#27272A] text-xs font-semibold text-[#A1A1AA]">
-              <span className="w-2 h-2 rounded-full bg-[#C7FF3D]"></span>
-              <span className="text-[#F4F4F5]">The internet&apos;s “bro what do I do?” button</span>
-            </div>
-
             {/* Main Headline */}
-            <div className="space-y-4">
-              <h1 className="text-4xl sm:text-7xl font-black tracking-tight text-[#F4F4F5] leading-[1.08]">
+            <div className="space-y-4 max-w-3xl mx-auto">
+              <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-[#F4F4F5] leading-[1.08]">
                 Bas screenshot bhe <span className="text-[#C7FF3D] inline-block animate-bounce">💀</span>
               </h1>
-              <p className="text-lg sm:text-2xl text-[#A1A1AA] font-medium max-w-2xl mx-auto">
+              <p className="text-base sm:text-xl md:text-2xl text-[#A1A1AA] font-medium max-w-2xl mx-auto">
                 Tech support for people who don&apos;t speak Tech.
               </p>
             </div>
 
-            {/* Interactive Hero Mascot Card */}
-            <div className="max-w-xl mx-auto bg-[#111113]/90 backdrop-blur-sm border-2 border-[#27272A] p-6 rounded-3xl shadow-[0_12px_40px_rgba(0,0,0,0.6)] flex flex-col sm:flex-row items-center gap-6 text-left">
-              <div
-                className="cursor-pointer group shrink-0"
-                onClick={() => {
-                  const states: MascotState[] = ["confused", "analyzing", "detective", "solved"];
-                  const nextIndex = (states.indexOf(heroMascotState) + 1) % states.length;
-                  setHeroMascotState(states[nextIndex]);
-                }}
-                title="Click Bhondu to change mood!"
-              >
-                <BhonduMascot state={heroMascotState} size={120} className="group-hover:scale-105 transition-transform" />
-                <div className="text-[10px] text-center font-bold text-[#A1A1AA] mt-1 group-hover:text-[#C7FF3D]">
-                  tap to cycle mood
+            {/* Visual Storytelling Flow: Scary Error ➔ Bhondu ➔ Simple Solution */}
+            <div className="max-w-4xl mx-auto bg-[#111113]/95 backdrop-blur-md border-2 border-[#27272A] p-4 sm:p-7 rounded-3xl shadow-[0_16px_50px_rgba(0,0,0,0.7)] space-y-4 relative overflow-hidden">
+              {/* Subtle decorative glow accents */}
+              <div className="absolute top-0 right-1/4 w-48 h-48 bg-[#C7FF3D]/5 blur-3xl rounded-full pointer-events-none" />
+              <div className="absolute bottom-0 left-1/4 w-48 h-48 bg-[#8B5CF6]/5 blur-3xl rounded-full pointer-events-none" />
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 items-stretch relative z-10">
+                {/* 1. Scary Error Screen Beat */}
+                <div className="p-4 rounded-2xl bg-[#09090B] border border-[#FB7185]/30 shadow-inner flex flex-col justify-between text-left relative group">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono font-bold text-[#FB7185] bg-[#FB7185]/10 px-2 py-0.5 rounded border border-[#FB7185]/20 flex items-center gap-1">
+                        <span>💀</span> scary error
+                      </span>
+                      <span className="text-[10px] font-mono text-[#71717A]">terminal.log</span>
+                    </div>
+                    <div className="font-mono text-xs text-[#FB7185] bg-[#18181B] p-2.5 rounded-xl border border-[#27272A] break-words">
+                      <code>Error: listen EADDRINUSE :::3000</code>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-[#A1A1AA] mt-2 italic">
+                    Cryptic red errors camping on your computer at midnight.
+                  </p>
+                </div>
+
+                {/* 2. Bhondu Mascot (Interactive Centerpiece) */}
+                <div className="flex flex-col items-center justify-between p-4 rounded-2xl bg-[#18181B]/80 border-2 border-[#8B5CF6]/30 text-center relative shadow-sm">
+                  <div
+                    className="cursor-pointer group select-none flex flex-col items-center"
+                    onClick={() => {
+                      const states: MascotState[] = ["confused", "analyzing", "detective", "warning", "solved"];
+                      const nextIndex = (states.indexOf(heroMascotState) + 1) % states.length;
+                      setHeroMascotState(states[nextIndex]);
+                    }}
+                    title="Click Bhondu to cycle mood!"
+                  >
+                    <BhonduMascot state={heroMascotState} size={100} className="group-hover:scale-105 transition-transform" />
+                    <span className="text-[10px] font-bold text-[#A1A1AA] group-hover:text-[#C7FF3D] transition-colors mt-1 font-mono">
+                      tap to cycle ({heroMascotState})
+                    </span>
+                  </div>
+
+                  <div className="mt-2 w-full">
+                    <div className="p-2.5 rounded-xl bg-[#111113] border border-[#27272A] text-xs text-[#F4F4F5] leading-snug">
+                      {heroMascotState === "confused" && "“Bhai tension mat le! Just drop the screen 💀”"}
+                      {heroMascotState === "analyzing" && "“Scanning error tokens... filtering gibberish 🔍”"}
+                      {heroMascotState === "detective" && "“Found the culprit! Port 3000 is occupied 💡”"}
+                      {heroMascotState === "warning" && "“Hold up! Check safety before running commands ⚠️”"}
+                      {heroMascotState === "solved" && "“Zombie process dead! Problem squashed 🗿”"}
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. Simple Solution Beat */}
+                <div className="p-4 rounded-2xl bg-[#09090B] border border-[#C7FF3D]/30 shadow-inner flex flex-col justify-between text-left relative group">
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-mono font-bold text-[#C7FF3D] bg-[#C7FF3D]/10 px-2 py-0.5 rounded border border-[#C7FF3D]/20 flex items-center gap-1">
+                        <span>🗿</span> simple fix
+                      </span>
+                      <span className="text-[10px] font-mono text-[#71717A]">plain english</span>
+                    </div>
+                    <div className="font-mono text-xs text-[#C7FF3D] bg-[#18181B] p-2.5 rounded-xl border border-[#27272A] break-words">
+                      <code>npx kill-port 3000</code>
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-[#A1A1AA] mt-2">
+                    One clean verified step. Solved in 10 seconds.
+                  </p>
                 </div>
               </div>
 
-              <div className="space-y-3 flex-1">
-                <div className="flex items-center justify-between">
-                  <h3 className="font-bold text-sm text-[#F4F4F5]">Bhondu</h3>
-                  <span className="text-[11px] font-mono text-[#A1A1AA]">
-                    mood: <span className="text-[#C7FF3D] font-bold">{heroMascotState}</span>
-                  </span>
-                </div>
-                <p className="text-xs sm:text-sm text-[#F4F4F5] leading-relaxed">
-                  {heroMascotState === "confused" &&
-                    "“You don't need a computer science degree to close an error dialog. Just drop the screen and I'll explain like a friend.”"}
-                  {heroMascotState === "analyzing" &&
-                    "“Running visual OCR scanner... reading error codes, checking documentation, filtering out useless nonsense...”"}
-                  {heroMascotState === "detective" &&
-                    "“Found the exact line where everything went wrong. It's not your fault, the software author wrote bad code.”"}
-                  {heroMascotState === "warning" &&
-                    "“Wait! Before running that command on Reddit, check if it deletes your files. Safety first!”"}
-                  {heroMascotState === "solved" &&
-                    "“Problem squashed! Ready to get back to gaming, coding, or sleeping peacefully.”"}
-                </p>
-                <div className="text-[11px] text-[#A1A1AA] flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#C7FF3D]" />
-                  <span>Plain English fixes • No passwords needed</span>
-                </div>
+              {/* Subtitle footer inside visual storytelling card */}
+              <div className="text-[11px] text-[#A1A1AA] flex items-center justify-center gap-2 pt-1 border-t border-[#27272A]/40">
+                <Sparkles className="w-3.5 h-3.5 text-[#C7FF3D]" />
+                <span>Zero jargon • Zero passwords needed • Ephemeral in-memory vision</span>
               </div>
             </div>
 

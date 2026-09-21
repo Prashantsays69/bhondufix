@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "BhonduFix — Bas screenshot bhe 🚀 | Tech Support for Humans",
+  title: "BhonduFix — Bas screenshot bhe 💀 | Tech Support for Humans",
   description:
     "AI-powered visual tech-support for people who don't speak tech. Drop your error screenshot and get plain-English, safe, step-by-step fixes.",
   icons: {
