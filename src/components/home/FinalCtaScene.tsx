@@ -2,92 +2,81 @@
 
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { BhonduMascot } from "@/components/mascot/BhonduMascot";
-import { Button } from "@/components/ui/Button";
-import { ComicSticker, HandwrittenNote, DoodleStar } from "@/components/comic/Doodles";
-import { ArrowRight, ShieldCheck, Zap, Sparkles } from "lucide-react";
+import { HandwrittenNote, DoodleArrow } from "@/components/comic/Doodles";
+import { ArrowRight, Sparkles, ShieldCheck } from "lucide-react";
 
 export const FinalCtaScene: React.FC = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-6 max-w-5xl mx-auto text-center relative overflow-hidden">
-      {/* Background glow burst */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] h-[350px] bg-[#C7FF3D]/10 blur-[130px] rounded-full pointer-events-none" />
+    <section className="py-24 sm:py-36 px-4 sm:px-8 max-w-5xl mx-auto text-center relative overflow-hidden">
+      {/* Subtle single ambient spotlight behind Bhondu */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] h-[350px] bg-[#C7FF3D]/10 blur-[140px] rounded-full pointer-events-none -z-10" />
 
-      {/* Comic Canvas Card */}
-      <motion.div
-        whileHover={{ scale: 1.01 }}
-        className="relative z-10 rounded-3xl bg-gradient-to-b from-[#18181B] to-[#111113] border-2 border-[#C7FF3D]/40 p-8 sm:p-16 shadow-[0_20px_60px_rgba(0,0,0,0.8)] space-y-8"
-      >
-        {/* Floating Accents */}
-        <div className="absolute -top-3 left-8 -rotate-3">
-          <ComicSticker text="PEACE ✌️" variant="cyan" />
-        </div>
-        <div className="absolute -top-3 right-8 rotate-3 hidden sm:block">
-          <ComicSticker text="WE ARE SO BACK 🗿" variant="lime" />
-        </div>
-
-        {/* Celebrating Mascot */}
+      {/* SUDDEN SIMPLIFICATION: High-contrast, clean, uncluttered canvas */}
+      <div className="space-y-8 sm:space-y-10 relative z-10">
+        
+        {/* Centered Bhondu in Solved/Celebrating state */}
         <div className="flex justify-center">
-          <div className="relative group cursor-pointer">
-            <BhonduMascot state="celebrating" size={130} className="group-hover:scale-110 transition-transform" />
-            <div className="absolute -top-2 -right-4">
-              <DoodleStar size={24} color="#C7FF3D" />
-            </div>
-          </div>
+          <motion.div
+            animate={
+              shouldReduceMotion
+                ? {}
+                : {
+                    y: [0, -8, 0],
+                    rotate: [0, 1.5, 0, -1.5, 0],
+                  }
+            }
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="relative"
+          >
+            <BhonduMascot state="celebrating" size={160} className="drop-shadow-2xl" />
+          </motion.div>
         </div>
 
-        {/* Massive Typography Beat */}
-        <div className="space-y-3">
-          <span className="text-xs sm:text-sm font-mono font-bold tracking-widest text-[#A1A1AA] uppercase">
-            Still Confused?
-          </span>
-
-          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black text-[#F4F4F5] uppercase tracking-tight leading-none">
-            Bas Screenshot Bhe <span className="text-[#C7FF3D]">💀</span>
-          </h2>
-
-          <p className="text-sm sm:text-lg text-[#A1A1AA] max-w-md mx-auto pt-2">
-            Drop the broken screen. Get plain-English instructions. Fix your computer in 60 seconds.
+        {/* Huge Stark Typography */}
+        <div className="space-y-3 sm:space-y-4">
+          <p className="text-sm sm:text-base md:text-lg font-black tracking-widest text-[#71717A] uppercase font-mono">
+            STILL CONFUSED?
           </p>
 
-          <div className="pt-2">
+          <h2 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase text-[#F4F4F5] tracking-tighter leading-none select-none drop-shadow-[0_12px_30px_rgba(0,0,0,0.9)]">
+            BAS SCREENSHOT <br />
+            <span className="text-[#C7FF3D]">BHE 💀</span>
+          </h2>
+
+          <p className="text-base sm:text-xl text-[#A1A1AA] max-w-lg mx-auto font-medium pt-2">
+            No signup required. No credit card. Zero tech jargon. Just drop your error and get back to work.
+          </p>
+        </div>
+
+        {/* Massive Lime CTA Button */}
+        <div className="pt-4 flex flex-col items-center justify-center gap-3">
+          <Link
+            href="/app"
+            className="group inline-flex items-center justify-center gap-3 px-8 sm:px-12 py-5 sm:py-6 rounded-full text-base sm:text-xl font-black uppercase tracking-wider bg-[#C7FF3D] text-[#09090B] border-2 border-[#C7FF3D] shadow-[0_8px_0_0_#84B512] hover:shadow-[0_12px_0_0_#84B512] hover:-translate-y-1 active:translate-y-1 active:shadow-[0_2px_0_0_#84B512] transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#C7FF3D]"
+          >
+            <Sparkles className="w-5 h-5 text-[#09090B] group-hover:rotate-12 transition-transform" />
+            <span>SEND A SCREENSHOT →</span>
+            <ArrowRight className="w-5 h-5 text-[#09090B] group-hover:translate-x-1 transition-transform" />
+          </Link>
+
+          {/* Small handwritten detail */}
+          <div className="pt-2 flex items-center gap-2 text-center">
             <HandwrittenNote color="#C7FF3D" rotate="-2deg" className="text-sm sm:text-base">
-              &ldquo;degree nahi screenshot bhe&rdquo; 🗿
+              &ldquo;degree nahi screenshot bhe&rdquo;
             </HandwrittenNote>
           </div>
         </div>
 
-        {/* The Strongest CTA on the Page */}
-        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/app" className="w-full sm:w-auto">
-            <Button
-              variant="lime"
-              size="lg"
-              className="w-full sm:w-auto text-lg sm:text-xl px-10 py-5 font-black uppercase shadow-[0_8px_0_0_#84B512] active:translate-y-1 active:shadow-[0_2px_0_0_#84B512] border-2 border-[#111113] group"
-              icon={<ArrowRight className="w-6 h-6 group-hover:translate-x-1.5 transition-transform" />}
-            >
-              Send a screenshot →
-            </Button>
-          </Link>
+        {/* Minimal Safe Tag */}
+        <div className="pt-8 flex items-center justify-center gap-2 text-xs font-mono text-[#71717A]">
+          <ShieldCheck className="w-4 h-4 text-[#C7FF3D]" />
+          <span>Private & Ephemeral • Screenshots deleted automatically after analysis</span>
         </div>
-
-        {/* Trust Badges */}
-        <div className="pt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-[#71717A] border-t border-[#27272A]/60">
-          <span className="inline-flex items-center gap-1.5">
-            <ShieldCheck className="w-4 h-4 text-[#C7FF3D]" />
-            Zero passwords or credentials needed
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Zap className="w-4 h-4 text-[#8B5CF6]" />
-            In-memory ephemeral analysis
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Sparkles className="w-4 h-4 text-[#22D3EE]" />
-            Free to use • No signup required
-          </span>
-        </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

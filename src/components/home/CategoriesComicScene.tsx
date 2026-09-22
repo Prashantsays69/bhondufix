@@ -1,116 +1,204 @@
 "use client";
 
 import React from "react";
-import { motion } from "framer-motion";
-import { ComicSticker, HandwrittenNote, DoodleStar } from "@/components/comic/Doodles";
-import { Terminal, Globe, Laptop, Smartphone, GraduationCap, PlusCircle } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { IndianMemeBadge, TapeSticker, DoodleStar } from "@/components/comic/Doodles";
+import {
+  Code2,
+  Globe,
+  Monitor,
+  Smartphone,
+  GraduationCap,
+  Sparkles,
+  ArrowRight,
+  Terminal,
+} from "lucide-react";
+
+interface CategoryCard {
+  id: string;
+  title: string;
+  tag: string;
+  description: string;
+  examples: string[];
+  icon: React.ReactNode;
+  rotate: string;
+  badgeType: "arre-bhai" | "ye-kya-hai" | "abey-ruk" | "jugaad" | "chill-bhai";
+  accentBorder: string;
+}
+
+const CATEGORIES: CategoryCard[] = [
+  {
+    id: "coding",
+    title: "CODING & DEV",
+    tag: "NODE • REACT • DOCKER",
+    description: "Port collisions, Next.js hydration mismatches, npm install timeouts, and broken dependencies.",
+    examples: ["EADDRINUSE: :::3000", "Module not found", "Git Merge Conflict"],
+    icon: <Code2 className="w-6 h-6 text-[#C7FF3D]" />,
+    rotate: "-3deg",
+    badgeType: "arre-bhai",
+    accentBorder: "border-[#C7FF3D]",
+  },
+  {
+    id: "browser",
+    title: "BROWSER RED SCREENS",
+    tag: "CHROME • CORS • SSL",
+    description: "Blocked by CORS policy, ERR_CERT_AUTHORITY_INVALID, 403 Forbidden, and broken cookies.",
+    examples: ["CORS Missing Header", "SSL Handshake Failed", "Localhost Refused"],
+    icon: <Globe className="w-6 h-6 text-[#22D3EE]" />,
+    rotate: "2.5deg",
+    badgeType: "ye-kya-hai",
+    accentBorder: "border-[#22D3EE]",
+  },
+  {
+    id: "windows",
+    title: "WINDOWS & SYSTEM",
+    tag: "BSOD • DLL • PATH",
+    description: "VCRUNTIME140.dll missing, PATH environment variables broken, or Blue Screen watchdog alerts.",
+    examples: ["MSVCP140.dll missing", "'cmd' is not recognized", "Port 80 blocked"],
+    icon: <Monitor className="w-6 h-6 text-[#FB7185]" />,
+    rotate: "-2deg",
+    badgeType: "abey-ruk",
+    accentBorder: "border-[#FB7185]",
+  },
+  {
+    id: "android",
+    title: "ANDROID & MOBILE",
+    tag: "GRADLE • ADB • EMULATOR",
+    description: "Gradle build failed, ADB device unauthorized, SDK location not found, or memory leaks.",
+    examples: ["Gradle Sync Failed", "Device Unauthorized", "JVM Out Of Memory"],
+    icon: <Smartphone className="w-6 h-6 text-[#8B5CF6]" />,
+    rotate: "3deg",
+    badgeType: "jugaad",
+    accentBorder: "border-[#8B5CF6]",
+  },
+  {
+    id: "portals",
+    title: "COLLEGE & GOVT ERP",
+    tag: "CSRF • CAPTCHA • TIMEOUT",
+    description: "Session expired right before 11:59 PM deadline, Captcha failed 5 times, or PDF upload error.",
+    examples: ["Session Timeout 403", "Captcha Invalid", "File exceeds 100KB"],
+    icon: <GraduationCap className="w-6 h-6 text-[#FBBF24]" />,
+    rotate: "-1.5deg",
+    badgeType: "chill-bhai",
+    accentBorder: "border-[#FBBF24]",
+  },
+];
 
 export const CategoriesComicScene: React.FC = () => {
-  const categories = [
-    {
-      icon: <Terminal className="w-6 h-6 text-[#C7FF3D]" />,
-      name: "Coding & Dev Errors",
-      desc: "Port collisions, npm package drama, Git rebase terror, and cryptic node backtraces.",
-      accent: "#C7FF3D",
-      sticker: "TOP REQUEST 💻",
-      variant: "lime" as const,
-      rotate: "-1.5deg",
-      colSpan: "lg:col-span-4",
-    },
-    {
-      icon: <Globe className="w-6 h-6 text-[#22D3EE]" />,
-      name: "Browser & Web Glitches",
-      desc: "CORS blocks, 403 Forbidden, broken cookies, and payment portal gateway timeouts.",
-      accent: "#22D3EE",
-      sticker: "NO PANIC 🌐",
-      variant: "cyan" as const,
-      rotate: "1.5deg",
-      colSpan: "lg:col-span-4",
-    },
-    {
-      icon: <Laptop className="w-6 h-6 text-[#8B5CF6]" />,
-      name: "Windows & Desktop Apps",
-      desc: "Missing DLL files, zombie background tasks, driver bugs, and admin permissions.",
-      accent: "#8B5CF6",
-      sticker: "SAFE STEPS 🪟",
-      variant: "purple" as const,
-      rotate: "-2deg",
-      colSpan: "lg:col-span-4",
-    },
-    {
-      icon: <Smartphone className="w-6 h-6 text-[#FBBF24]" />,
-      name: "Android Device Issues",
-      desc: "Developer options, ADB debugging bridges, permission locks, and storage puzzles.",
-      accent: "#FBBF24",
-      sticker: "MOBILE 📱",
-      variant: "dark" as const,
-      rotate: "1deg",
-      colSpan: "lg:col-span-6",
-    },
-    {
-      icon: <GraduationCap className="w-6 h-6 text-[#FB7185]" />,
-      name: "College Portals",
-      desc: "Clunky government ERPs, registration session timeouts, and attendance gateways.",
-      accent: "#FB7185",
-      sticker: "11:59 PM DEADLINE 🎓",
-      variant: "rose" as const,
-      rotate: "-1deg",
-      colSpan: "lg:col-span-6",
-    },
-  ];
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="py-16 sm:py-24 px-4 sm:px-6 max-w-6xl mx-auto space-y-12">
-      {/* Header */}
-      <div className="text-center space-y-3 max-w-2xl mx-auto">
-        <div className="inline-flex items-center gap-2">
-          <ComicSticker text="WHAT CAN YOU DROP RIGHT NOW?" variant="lime" rotate="2deg" />
+    <section id="categories" className="py-20 sm:py-28 relative overflow-hidden bg-[#09090B]">
+      
+      {/* Top Continuous Marquee Ribbon (DesignBomb Style) */}
+      <div className="w-full bg-[#C7FF3D] py-3 text-[#09090B] font-black uppercase text-xs sm:text-sm tracking-wider select-none overflow-hidden -rotate-1 shadow-comic mb-16">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-8">
+          <span>BAS SCREENSHOT BHE 💀</span>
+          <span>•</span>
+          <span>NO DEGREE REQUIRED</span>
+          <span>•</span>
+          <span>NEXT.JS • PYTHON • DOCKER • WINDOWS</span>
+          <span>•</span>
+          <span>ZERO CORPORATE JARGON</span>
+          <span>•</span>
+          <span>JUGAAD ACTIVATED ⚡</span>
+          <span>•</span>
+          <span>WE ARE SO BACK 🗿</span>
+          <span>•</span>
+          <span>BAS SCREENSHOT BHE 💀</span>
+          <span>•</span>
+          <span>NO DEGREE REQUIRED</span>
+          <span>•</span>
+          <span>NEXT.JS • PYTHON • DOCKER • WINDOWS</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#F4F4F5] uppercase">
-          Errors Bhondu Eats For Breakfast
-        </h2>
-        <p className="text-sm sm:text-base text-[#A1A1AA]">
-          Focused strictly on high-impact errors where real users get stuck daily.
-        </p>
       </div>
 
-      {/* Asymmetric Comic Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-5">
-        {categories.map((cat, i) => (
-          <motion.div
-            key={i}
-            whileHover={{ y: -5, rotate: 0, transition: { duration: 0.15 } }}
-            style={{ transform: `rotate(${cat.rotate})` }}
-            className={`${cat.colSpan} rounded-3xl bg-[#111113] border-2 border-[#27272A] p-6 space-y-4 shadow-[4px_4px_0_0_#18181B] hover:border-[#F4F4F5]/40 transition-all flex flex-col justify-between`}
-          >
-            <div className="flex items-center justify-between">
-              <div
-                style={{ borderColor: cat.accent }}
-                className="p-3 rounded-2xl bg-[#18181B] border-2 shadow-inner"
-              >
-                {cat.icon}
-              </div>
-              <ComicSticker text={cat.sticker} variant={cat.variant} rotate={i % 2 === 0 ? "3deg" : "-3deg"} />
-            </div>
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 space-y-12">
+        {/* Section Header */}
+        <div className="space-y-3 max-w-2xl">
+          <div className="flex items-center gap-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#C7FF3D]" />
+            <span className="text-xs font-black uppercase tracking-widest text-[#C7FF3D]">
+              04 / PROBLEM CATEGORIES
+            </span>
+          </div>
 
-            <div className="space-y-1.5">
-              <h3 className="text-lg font-black text-[#F4F4F5] tracking-tight">{cat.name}</h3>
-              <p className="text-xs text-[#A1A1AA] leading-relaxed">{cat.desc}</p>
-            </div>
+          <h2 className="text-4xl sm:text-6xl font-black uppercase tracking-tight text-[#F4F4F5]">
+            If It Shows An Error, <br />
+            <span className="text-[#C7FF3D]">Bhondu Can Read It.</span>
+          </h2>
 
-            <div className="pt-2 border-t border-[#27272A]/50 flex items-center justify-between text-[10px] text-[#71717A] font-mono">
-              <span>Ready for screenshot</span>
-              <DoodleStar size={14} color={cat.accent} />
-            </div>
-          </motion.div>
-        ))}
-
-        {/* Coming Soon Asymmetric Tile */}
-        <div className="lg:col-span-12 rounded-3xl bg-[#18181B]/40 border-2 border-dashed border-[#27272A] p-5 text-center flex flex-col sm:flex-row items-center justify-center gap-3">
-          <PlusCircle className="w-5 h-5 text-[#A1A1AA]" />
-          <p className="text-xs text-[#A1A1AA] font-mono">
-            <strong>More coming soon:</strong> Payments & banking errors, tax forms, and browser extensions.
+          <p className="text-sm sm:text-base text-[#A1A1AA]">
+            An art-directed gallery of every annoying software tantrum BhonduFix solves daily.
           </p>
+        </div>
+
+        {/* Art-Directed Floating Poster Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 pt-4">
+          {CATEGORIES.map((cat, idx) => (
+            <motion.div
+              key={cat.id}
+              whileHover={{
+                scale: shouldReduceMotion ? 1 : 1.03,
+                rotate: "0deg",
+                transition: { duration: 0.2 },
+              }}
+              style={{
+                transform: shouldReduceMotion ? "none" : `rotate(${cat.rotate})`,
+              }}
+              className={`relative rounded-3xl bg-[#111113] border-2 ${cat.accentBorder} p-6 shadow-comic-lg flex flex-col justify-between group cursor-pointer transition-shadow hover:shadow-[10px_10px_0_0_#000000]`}
+            >
+              {/* Tape Sticker on Top Corner */}
+              <div className="absolute -top-3 right-8 pointer-events-none">
+                <TapeSticker rotate="2deg" width={70} height={16} />
+              </div>
+
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <div className="w-12 h-12 rounded-2xl bg-[#18181B] border-2 border-[#27272A] flex items-center justify-center shadow-comic">
+                    {cat.icon}
+                  </div>
+                  <IndianMemeBadge type={cat.badgeType} rotate="-3deg" />
+                </div>
+
+                <div className="space-y-1">
+                  <h3 className="text-xl sm:text-2xl font-black uppercase text-[#F4F4F5] tracking-tight">
+                    {cat.title}
+                  </h3>
+                  <p className="text-xs font-mono font-bold text-[#A1A1AA]">
+                    {cat.tag}
+                  </p>
+                </div>
+
+                <p className="text-xs sm:text-sm text-[#A1A1AA] leading-relaxed">
+                  {cat.description}
+                </p>
+
+                {/* Example Pills */}
+                <div className="space-y-1.5 pt-2">
+                  <div className="text-[10px] font-mono uppercase tracking-wider text-[#71717A]">
+                    Common triggers:
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {cat.examples.map((ex) => (
+                      <span
+                        key={ex}
+                        className="px-2 py-0.5 rounded-md bg-[#09090B] border border-[#27272A] text-[11px] font-mono text-[#F4F4F5]"
+                      >
+                        {ex}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Card Footer */}
+              <div className="pt-6 mt-4 border-t border-[#27272A] flex items-center justify-between text-xs font-bold text-[#C7FF3D]">
+                <span>DROP SCREENSHOT</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

@@ -237,3 +237,171 @@ export const DoodleStar = ({
     <path d="M12 0L14.5 8.5L23.5 12L14.5 15.5L12 24L9.5 15.5L0.5 12L9.5 8.5L12 0Z" />
   </svg>
 );
+
+// Washi Tape / Tape Strip Effect
+export const TapeSticker = ({
+  className = "",
+  color = "rgba(199, 255, 61, 0.4)",
+  width = 80,
+  height = 20,
+  rotate = "-4deg",
+}: {
+  className?: string;
+  color?: string;
+  width?: number;
+  height?: number;
+  rotate?: string;
+}) => (
+  <div
+    style={{
+      width,
+      height,
+      backgroundColor: color,
+      transform: `rotate(${rotate})`,
+    }}
+    className={`backdrop-blur-xs border-y border-dashed border-black/20 pointer-events-none select-none shadow-sm ${className}`}
+  />
+);
+
+// Hand-drawn Scribble Circle
+export const ScribbleCircle = ({
+  className = "",
+  color = "#C7FF3D",
+  size = 64,
+}: {
+  className?: string;
+  color?: string;
+  size?: number;
+}) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill="none"
+    className={`pointer-events-none select-none ${className}`}
+  >
+    <path
+      d="M20 50 C18 25, 75 18, 85 45 C95 72, 30 88, 15 65 C5 45, 40 22, 70 20"
+      stroke={color}
+      strokeWidth="3"
+      strokeLinecap="round"
+      strokeDasharray="2 0"
+    />
+  </svg>
+);
+
+// High-voltage Indian Meme Badges
+export const IndianMemeBadge = ({
+  type,
+  className = "",
+  rotate = "-3deg",
+}: {
+  type:
+    | "arre-bhai"
+    | "kya-kar-raha-hai"
+    | "ye-kya-hai"
+    | "degree-nahi"
+    | "bas-kar"
+    | "abey-ruk"
+    | "so-back"
+    | "jugaad"
+    | "chill-bhai"
+    | "kaam-ho-gaya"
+    | "error-again";
+  className?: string;
+  rotate?: string;
+}) => {
+  const configs: Record<
+    string,
+    { text: string; bg: string; textCol: string; border: string; shadow: string }
+  > = {
+    "arre-bhai": {
+      text: "ARRE BHAI 💀",
+      bg: "bg-[#FB7185]",
+      textCol: "text-[#09090B]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "kya-kar-raha-hai": {
+      text: "BHAI KYA KAR RAHA HAI 💀",
+      bg: "bg-[#8B5CF6]",
+      textCol: "text-[#F4F4F5]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "ye-kya-hai": {
+      text: "YE KYA HO RAHA HAI 😵‍💫",
+      bg: "bg-[#22D3EE]",
+      textCol: "text-[#09090B]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "degree-nahi": {
+      text: "DEGREE NAHI SCREENSHOT BHE 📜❌",
+      bg: "bg-[#C7FF3D]",
+      textCol: "text-[#09090B]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "bas-kar": {
+      text: "BAS KAR BHAI 😭",
+      bg: "bg-[#FB7185]",
+      textCol: "text-[#09090B]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "abey-ruk": {
+      text: "ABEY RUK ✋",
+      bg: "bg-[#FBBF24]",
+      textCol: "text-[#09090B]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "so-back": {
+      text: "WE ARE SO BACK 🗿",
+      bg: "bg-[#C7FF3D]",
+      textCol: "text-[#09090B]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "jugaad": {
+      text: "JUGAAD ACTIVATED ⚡",
+      bg: "bg-[#8B5CF6]",
+      textCol: "text-[#F4F4F5]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "chill-bhai": {
+      text: "CHILL BHAI 🧊",
+      bg: "bg-[#22D3EE]",
+      textCol: "text-[#09090B]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "kaam-ho-gaya": {
+      text: "KAAM HO GAYA ✨",
+      bg: "bg-[#C7FF3D]",
+      textCol: "text-[#09090B]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+    "error-again": {
+      text: "ERROR AGAIN?! 💀",
+      bg: "bg-[#FB7185]",
+      textCol: "text-[#09090B]",
+      border: "border-[#111113]",
+      shadow: "shadow-[4px_4px_0_0_#111113]",
+    },
+  };
+
+  const item = configs[type] || configs["arre-bhai"];
+
+  return (
+    <span
+      style={{ transform: `rotate(${rotate})` }}
+      className={`inline-flex items-center gap-1.5 font-black uppercase text-xs sm:text-sm tracking-wider px-3 py-1.5 rounded-xl border-2 select-none hover:scale-110 active:scale-95 transition-all duration-150 ${item.bg} ${item.textCol} ${item.border} ${item.shadow} ${className}`}
+    >
+      {item.text}
+    </span>
+  );
+};
